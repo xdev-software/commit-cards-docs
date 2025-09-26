@@ -1,6 +1,6 @@
 site:
   title: "XDEV Commit Cards"
-  start_page: cards::index.adoc
+  start_page: ROOT::index.adoc
   robots: allow
 
 # see https://docs.antora.org/antora/2.3/playbook/configure-runtime/
