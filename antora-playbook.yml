@@ -18,6 +18,7 @@ content:
   sources:
     - url: .
       start_path: .
+      edit_url: https://github.com/xdev-software/commit-cards-docs/blob/{refname}/{path}
 
 ui:
   bundle:
