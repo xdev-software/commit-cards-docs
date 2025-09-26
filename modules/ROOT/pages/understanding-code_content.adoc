@@ -1,0 +1,29 @@
+Understanding your code means you should be able to explain every line to a colleague without hesitation. If you can’t, it’s a red flag. Writing code you don’t fully grasp leads to bugs, technical debt, and fragile systems. *Every piece of code you commit should be intentional, not mysterious.*
+
+A practical way to apply this principle is the “rubber duck test”: explain your code aloud, line by line, as if a colleague  - or even a rubber duck  - is listening. If you stumble, refactor or add clarity. This ensures that code reviews are meaningful and maintenance is easier.
+
+Example:
+
+```java
+// Confusing: what does this do? magic numbers, unclear intent
+double result = x * 0.453592;
+
+// Clear: everyone understands the conversion
+double poundsToKilograms(double pounds) {
+    return pounds * 0.453592;
+}
+```
+
+Notice how the second version is self-explanatory. Anyone reading it immediately understands the purpose, without needing a comment.
+
+Another tip: use descriptive names, extract methods for complex logic, and avoid clever hacks that only you understand. Complex operations should live in well-named methods that document intent:
+
+```java
+// Hard to understand in-place
+if ((balance - withdrawal) < 0) { ... }
+
+// Clear and intentional
+if (wouldOverdraft(balance, withdrawal)) { ... }
+```
+
+Before each commit, ask yourself: *“Could a teammate understand this without asking me?”* If the answer is no, stop, clarify, refactor. This habit prevents technical debt from sneaking in, improves collaboration, and builds a codebase that is resilient and maintainable. Clear understanding is the foundation of clean, professional code.

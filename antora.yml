@@ -1,0 +1,5 @@
+name: cards
+title: XDEV Commit Cards
+version: v1.1
+nav:
+  - modules/ROOT/nav.adoc

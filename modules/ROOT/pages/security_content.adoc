@@ -1,0 +1,50 @@
+Security should be part of every commit. Handling sensitive data correctly, validating inputs, and keeping dependencies up-to-date are non-negotiable. One careless method can create vulnerabilities that are hard to fix later.
+
+For example, storing passwords in plain text is unsafe:
+
+```java
+public class UserService {
+    public void saveUser(String username, String password) {
+        database.save(username, password); // unsafe!
+    }
+}
+```
+
+Refactor using **Spring Security’s `BCryptPasswordEncoder`**, a current and maintained library:
+
+```java
+import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
+
+public class UserService {
+    private final Pbkdf2PasswordEncoder passwordEncoder =
+    new Pbkdf2PasswordEncoder(
+        "secret",16,600_000,
+        Pbkdf2PasswordEncoder.SecretKeyFactoryAlgorithm.PBKDF2WithHmacSHA256
+    );
+
+    public void saveUser(String username, String password) {
+        String hashedPassword = passwordEncoder.encode(password);
+        database.save(username, hashedPassword);
+    }
+
+    public boolean checkPassword(String password, String storedHash) {
+        return passwordEncoder.matches(password, storedHash);
+    }
+}
+```
+
+Here:
+
+* `encode` hashes the password with a strong salt.
+* `matches` safely verifies user input against the stored hash.
+
+Practical habits for secure code:
+
+* Never store sensitive information in plain text.
+* Validate all user inputs; never trust external data.
+* Use well-maintained libraries like Spring Security for cryptography.
+* Keep dependencies up-to-date and monitor for vulnerabilities.
+* Limit access to sensitive methods and data with proper access control.
+
+Every commit should ask: *“Could this expose sensitive data or create a vulnerability?”*
+Using modern, maintained libraries and secure patterns consistently keeps your code safe and maintainable.

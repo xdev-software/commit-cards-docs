@@ -1,0 +1,47 @@
+Refactoring is about improving code structure, readability, and safety without changing behavior.
+Every time you touch code, ask: *“Can this be clearer, safer, or easier to maintain?”*
+Focus on removing duplication, updating outdated practices, and fixing potential runtime issues.
+
+Consider this old code that prints directly to the console and ignores null safety:
+
+```java
+public class UserService {
+    public void printUserDetails(User user) {
+        System.out.println("User ID: " + user.getId());
+        System.out.println("Name: " + user.getName());
+    }
+}
+```
+
+This is fragile: `user` could be `null`, and `System.out.println` is not suitable for real applications.
+Refactor it to improve safety and maintainability:
+
+```java
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class UserService {
+    private static final Logger log = LoggerFactory.getLogger(UserService.class);
+
+    public void printUserDetails(User user) {
+        if (user == null) {
+            log.warn("Attempted to print details of a null user");
+            return;
+        }
+        log.debug("User ID: {}", user.getId());
+        log.debug("Name: {}", user.getName());
+    }
+}
+```
+
+Now the code is null-safe and uses proper logging instead of printing to the console.
+
+Practical refactoring habits:
+
+* Replace temporary or debug code (`System.out.println`) with proper logging.
+* Always check for `null` or invalid inputs before using objects.
+* Extract repeated logic into helper methods when necessary.
+* Use meaningful log messages to make debugging easier.
+
+Every commit should leave the code safer, more readable, and easier to maintain.
+Refactoring isn’t just cleanup - it’s about preventing future bugs and making the code clearer for everyone who works with it.

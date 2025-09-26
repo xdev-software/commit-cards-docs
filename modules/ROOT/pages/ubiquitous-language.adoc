@@ -1,0 +1,4 @@
+:card-title: Ubiquitous Language
+:card-description: Don't make up words in your code. Try to use a vocabulary that is clear to all the people involved in the project.
+
+include::_partials/card-template.adoc[]

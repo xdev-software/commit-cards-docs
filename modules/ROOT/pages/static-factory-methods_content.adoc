@@ -1,0 +1,59 @@
+*Static factory methods are an alternative to constructors that can make your code clearer, more flexible, and easier to maintain.* Unlike constructors, they can have meaningful names, return subtypes, or even reuse existing instances. Use them when a simple constructor doesn’t communicate intent or when you want more control over object creation.
+
+For example, a standard constructor:
+
+```java
+public class User {
+    private final String name;
+    private final int age;
+
+    public User(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+```
+
+A static factory method can improve readability and flexibility:
+
+```java
+public class User {
+    private final String name;
+    private final int age;
+
+    private User(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public static User of(String name, int age) {
+        return new User(name, age);
+    }
+
+    public static User anonymous() {
+        return new User("Anonymous", 0);
+    }
+}
+```
+
+Now, the intent is clear:
+
+```java
+User u1 = User.of("Alice", 30);
+User u2 = User.anonymous();
+```
+
+Advantages:
+
+* **Meaningful names** clarify object purpose.
+* **Return subtypes** or cached instances if needed.
+* **Hide implementation details** while keeping construction flexible.
+* Can **avoid creating multiple identical objects** via caching or singletons.
+
+Practical habits:
+
+* Use static factory methods when constructors are ambiguous or overloaded.
+* Prefer them for immutable classes  - they help express intent clearly.
+* Combine with `private` constructors to prevent misuse.
+
+Every commit should ask: “Could this object creation be clearer or more flexible?” Static factory methods make your code easier to read, maintain, and extend over time.

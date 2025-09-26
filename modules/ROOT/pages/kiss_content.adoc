@@ -1,0 +1,31 @@
+Keep It Simple and Stupid means writing code that is easy to read, easy to follow, and easy to maintain. Simplicity reduces bugs and makes life easier for anyone who touches your code in the future, including you.
+
+The mistake many developers make is trying to be clever or compact instead of clear. Short code is not always simple code. Readability always wins over saving a few lines.
+
+For example, look at this:
+
+```java
+// Confusing: works, but dense and hard to scan
+public boolean canScheduleMeeting(User u, Meeting m) {
+    return u != null && m != null && u.hasPermission("SCHEDULE")
+        && (m.getDate().isAfter(LocalDate.now())
+        && (!m.isFull() || (u.isAdmin() && u.isActive())));
+}
+```
+
+```java
+// Simple: longer, but clear step by step
+public boolean canScheduleMeeting(User user, Meeting meeting) {
+    if (user == null || meeting == null) return false;
+    if (!user.hasPermission("SCHEDULE")) return false;
+    if (meeting.getDate().isBefore(LocalDate.now())) return false;
+    if (meeting.isFull() && !(user.isAdmin() && user.isActive())) return false;
+    return true;
+}
+```
+
+Both versions work, but the second one tells the story step by step. Anyone can follow the logic without pausing to parse conditions in their head.
+
+KISS is not about always writing the fewest lines, but about removing unnecessary complexity. If someone new to the codebase can read your method and understand it instantly, you are doing it right.
+
+Every time you commit, ask yourself: *Is this code written for humans to understand, or for the compiler to execute?* If it is not clear to humans, make it simpler.

@@ -1,0 +1,21 @@
+When you pass around raw maps, lists, or **generic objects, your code becomes unclear** and harder to maintain. A `Map<String, Object>` might work quickly, but six months later nobody remembers what keys exist or what values they hold. Giving data a name and structure makes the code self-explanatory and much safer.
+
+Bad example:
+
+```java
+Map<String, Object> user = new HashMap<>();
+user.put("id", 42);
+user.put("active", true);
+```
+
+What is inside this map? You need to dig into other parts of the code to find out. Adding or changing fields becomes error-prone.
+
+Better approach with a record:
+
+```java
+public record User(int id, boolean active) {}
+```
+
+Now the structure is explicit, concise, and immutable by default. You get equals, hashCode, and toString for free. The compiler helps you, the IDE can auto-complete, and new developers immediately understand what a `User` is. You can still extend it later with methods for validation or domain logic if needed.
+
+Every time you commit, check if you used a raw collection or anonymous object where a record (or class) would communicate intent better. This simple step will make your code cleaner, easier to refactor, and much less error-prone.
