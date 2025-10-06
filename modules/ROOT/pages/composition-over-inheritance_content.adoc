@@ -1,0 +1,48 @@
+Favor composition over inheritance whenever possible. **Inheritance creates tight coupling between classes** and can make your code rigid and hard to maintain. **Composition lets you build complex behavior by combining small, focused objects**, keeping your code flexible and testable.
+
+For example, instead of inheriting a `Printer` class to add logging:
+
+```java
+class LoggingPrinter extends Printer {
+    @Override
+    public void print(String message) {
+        System.out.println("Logging: " + message);
+        super.print(message);
+    }
+}
+```
+
+Use composition to combine behaviors:
+
+```java
+class Printer {
+    public void print(String message) {
+       //Print with actual printer
+    }
+}
+
+class Logger {
+    public void log(String message) {
+        System.out.println("Logging: " + message);
+    }
+}
+
+class LoggingPrinter {
+    private final Printer printer;
+    private final Logger logger;
+
+    public LoggingPrinter(Printer printer, Logger logger) {
+        this.printer = printer;
+        this.logger = logger;
+    }
+
+    public void print(String message) {
+        logger.log(message);
+        printer.print(message);
+    }
+}
+```
+
+Composition keeps each class focused, reduces coupling, and makes it easy to swap implementations or add new behaviors. Inheritance should only be used when a strict “is-a” relationship exists and cannot be expressed via composition.
+
+Before every commit, review your design: could composition replace inheritance? This simple habit leads to cleaner, more maintainable, and more flexible codebases.

@@ -1,0 +1,4 @@
+:card-title: DRY
+:card-description: Don't Repeat Yourself. Make sure to only repeat yourself if it is maintainable for future changes.
+
+include::_partials/card-template.adoc[]

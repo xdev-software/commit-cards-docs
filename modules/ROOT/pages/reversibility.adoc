@@ -1,0 +1,4 @@
+:card-title: Reversibility
+:card-description: Are you able to change the code again? There are no final decisions and requirements might change. Be prepared.
+
+include::_partials/card-template.adoc[]

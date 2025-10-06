@@ -1,0 +1,43 @@
+"Easier To Change" is about writing code that can adapt to future requirements without being locked into rigid, overengineered structures. Overengineering can make small changes painful and increase the risk of bugs.
+
+Hard-to-change example:
+
+```java
+public class FileProcessor {
+
+    private final FileReaderFactory readerFactory;
+    private final FileWriterFactory writerFactory;
+    private final Logger logger;
+
+    public FileProcessor(FileReaderFactory readerFactory, FileWriterFactory writerFactory, Logger logger) {
+        this.readerFactory = readerFactory;
+        this.writerFactory = writerFactory;
+        this.logger = logger;
+    }
+
+    public void processCsv(File file) { /* complicated CSV processing */ }
+    public void processXml(File file) { /* unused, complicated XML processing */ }
+    public void processJson(File file) { /* unused, complicated JSON processing */ }
+}
+```
+
+This class tries to anticipate all file types and uses factories and multiple dependencies, even though the project might only ever need CSV. Adding a new file type requires touching multiple factories, modifying constructors, and updating logging - overly rigid and painful.
+
+Balanced, easier-to-change example:
+
+```java
+public class FileProcessor {
+
+    private final Logger logger;
+
+    public FileProcessor(Logger logger) {
+        this.logger = logger;
+    }
+
+    public void processCsv(File file) { /* simple CSV processing */ }
+}
+```
+
+When a new format is needed, you add a clearly named method like `processXml` or `processJson` without touching factories or constructors. No extra complexity, and the class remains readable and maintainable.
+
+Before committing, ask: *Did I make this code easier to extend or modify without adding unnecessary layers?* ETC is about keeping things simple, focused, and flexible for the future.

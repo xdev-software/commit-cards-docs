@@ -1,0 +1,21 @@
+Consistent code style is not just cosmetic. It makes code easier to read, reduces mistakes, and avoids unnecessary debates. Don’t rely on memory or luck. **Use a Checkstyle configuration and an auto-formatter** that match your repository standards, and **apply them automatically before commits or during builds.**
+
+For Java projects, tools like **Checkstyle**, **Spotless**, or your IDE’s built-in formatter can enforce naming conventions, indentation, braces, line length, and more. You can configure them to run automatically in your IDE or as part of a Maven build:
+
+```xml
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-checkstyle-plugin</artifactId>
+    <version>x</version>
+    <configuration>
+        <configLocation>checkstyle.xml</configLocation>
+        <encoding>UTF-8</encoding>
+        <consoleOutput>true</consoleOutput>
+        <failsOnError>true</failsOnError>
+    </configuration>
+</plugin>
+```
+
+With this setup, running `mvn checkstyle:check` validates your code against the rules automatically. IDE integrations can format your code on save, keeping it consistent without extra effort.
+
+The habit to form: never commit code that violates style rules. Automate formatting and checks so your team can focus on logic, not indentation or brace placement. Small investments like this prevent friction in code reviews and maintain a clean, readable codebase over time.

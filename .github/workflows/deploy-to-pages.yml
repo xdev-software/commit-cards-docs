@@ -1,0 +1,25 @@
+name: Deploy to Pages
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@v5
+
+    - name: Run build in Docker
+      run: |
+        docker run --rm -v ${PWD}:/antora -e CI=true antora/antora antora-playbook.yml
+
+    - name: Deploy to Github pages
+      uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e # v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./build/site
+        force_orphan: true

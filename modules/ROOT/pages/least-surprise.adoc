@@ -1,0 +1,4 @@
+:card-title: Principle of least surprise
+:card-description: Code should behave in a way that most developers will expect it to behave. Don't surprise devs with 'smart' or 'elegant' behaviour.
+
+include::_partials/card-template.adoc[]

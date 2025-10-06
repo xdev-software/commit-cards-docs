@@ -1,0 +1,4 @@
+:card-title: Don't ignore exceptions
+:card-description: There are plenty of ways to handle exceptions, but don't ignore them! Rethrow them, log them or handle them appropriately.
+
+include::_partials/card-template.adoc[]

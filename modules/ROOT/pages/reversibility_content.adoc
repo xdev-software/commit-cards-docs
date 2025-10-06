@@ -1,0 +1,49 @@
+Reversibility is about keeping your code flexible and easy to change. Requirements evolve, features get removed, and decisions may need to be undone. Code should not lock you into one approach - avoid over-engineering or committing to a single, hard-to-change design.
+
+For example, instead of this rigid approach:
+
+```java
+public class PaymentService {
+    public void processPayment(Order order) {
+        // only supports credit cards
+        chargeCreditCard(order.getCreditCard(), order.getAmount());
+    }
+}
+```
+
+Refactor it to make it easy to extend or change later:
+
+```java
+public interface PaymentProcessor {
+    void process(Order order);
+}
+
+public class CreditCardProcessor implements PaymentProcessor {
+    public void process(Order order) {
+        // credit card logic
+    }
+}
+
+public class PaymentService {
+    private final PaymentProcessor processor;
+
+    public PaymentService(PaymentProcessor processor) {
+        this.processor = processor;
+    }
+
+    public void processPayment(Order order) {
+        processor.process(order);
+    }
+}
+```
+
+Now, if the requirements change to support PayPal or crypto, you can add a new `PaymentProcessor` implementation without touching the existing service.
+
+Practical habits for reversibility:
+
+* Favor composition and interfaces over hard-coded logic.
+* Avoid premature optimization that makes changes expensive.
+* Keep changes localized  - minimize side effects.
+* Write small, focused methods and classes that are easy to swap or extend.
+
+Every commit should leave the code easier to adjust if requirements change. *Reversibility isn’t about indecision - it’s about building code that adapts gracefully as the real world evolves.*

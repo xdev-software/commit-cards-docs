@@ -1,0 +1,31 @@
+Exceptions are signals that something went wrong. Ignoring them is like pretending a car’s warning light isn’t on - you might get lucky once, but eventually it will crash. *Always handle exceptions meaningfully: log them, wrap them, or rethrow them so someone can respond.*
+
+Bad example:
+
+```java
+try {
+    processOrder(order);
+} catch (Exception e) {
+    // ignored
+}
+```
+
+Swallowing exceptions hides problems and makes debugging nearly impossible. Bugs silently accumulate and create unpredictable failures.
+
+Better example:
+
+```java
+try {
+    processOrder(order);
+} catch (IOException e) {
+    logger.error("Failed to process order {}", order.getId(), e);
+}
+```
+
+Here, the exception is logged with context which gives maintainers visibility and traceability.
+A valid alternative would be to throw a custom exception like this: `throw new OrderProcessingException("Unable to process order", e);`
+With this a higher function could handle the exception more specifically and less generalised.
+
+If logging or rethrowing is not needed immediately, at least add a comment explaining why it’s safe to ignore. Otherwise, treat every exception as valuable information about a potential problem.
+
+Every time you commit, check: *Am I ignoring an exception? If so, what is the safe and meaningful way to handle it?* Handling exceptions properly reduces hidden bugs, improves stability, and makes your code more reliable.
