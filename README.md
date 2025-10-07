@@ -11,3 +11,10 @@ Can be executed with
 docker run --rm -v ${PWD}:/antora antora/antora antora-playbook.yml
 ```
 NOTE: For Windows you should replace `${PWD}` with `%cd%`
+
+## License
+
+This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.  
+See the [LICENSE](LICENSE) file for details.
+
+© 2025 XDEV Software GmbH
