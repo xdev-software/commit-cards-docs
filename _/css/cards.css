@@ -1,0 +1,179 @@
+/* ===============================
+   General Page Styles
+   =============================== */
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    line-height: 1.6;
+}
+
+a {
+    color: black !important; /* XDEV red highlight */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #c02222 !important;
+}
+
+/* ===============================
+   Main Content Layout
+   =============================== */
+
+.content {
+    flex-direction: row;
+}
+
+/* ===============================
+   Table of Contents Sidebar
+   =============================== */
+
+.toc.sidebar {
+    position: sticky;
+    top: 2rem;
+    flex: 0 0 200px;
+}
+
+.toc .toc-menu a.is-active {
+    border-left-color: rgb(235, 42, 57);
+}
+.is-current-page.is-active {
+    border-radius: 2em;
+    background: linear-gradient(135deg, color-mix(in srgb, rgb(235, 42, 57) 25%, transparent), color-mix(in srgb, rgb(235, 42, 57) 12%, transparent));
+    border: 1px solid color-mix(in srgb, rgb(235, 42, 57) 60%, rgb(235, 42, 57));
+}
+
+
+.title {
+}
+
+.nav-menu h3.title {
+    padding: 0.25rem 1.5rem 0.5rem 1rem;
+    font-size: 0.95rem;
+    box-shadow: 0 1px 0 #e1e1e1;
+    /* Todo sticky fix
+    position: sticky;
+    top: 0;
+    background: #f3f0fb;
+    */
+}
+
+
+/* ===============================
+   Article / Doc Styling
+   =============================== */
+.card-layout {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+h1 {
+    text-align: center;
+    /*margin-left: calc(200px + 3rem);*/
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Inter', sans-serif;
+    color: #333333;
+    margin-bottom: 1rem;
+}
+
+/* ===============================
+   Card Image Styles
+   =============================== */
+.card-image, .imageblock {
+    float: right;
+    width: 200px;
+    /* overrides the default margin of site.css */
+    margin: 1rem 1rem 1rem 3rem !important;
+    transform: rotate(-5deg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-image 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
+}
+
+.card-image img {
+    width: 100%;
+    display: block;
+    border-radius: 12px;
+}
+
+/* Hover animation: tilt reset + scale + background image */
+.card-image:hover {
+    transform: rotate(0deg) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    background-image: url('./images/card-hover-bg.avif'); /* change to your hover image */
+}
+
+.card-layout > :not(.card-image) {
+    overflow: hidden;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* ===============================
+   Paragraphs & Code Blocks
+   =============================== */
+.paragraph {
+    margin-bottom: 1.25rem;
+}
+
+.listingblock {
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    padding: 1rem;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+}
+
+pre {
+    margin: 0;
+}
+
+/* ===============================
+   Animations
+   =============================== */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ===============================
+   Mobile / Small Screen Styles
+   =============================== */
+@media screen and (max-width: 768px) {
+    .card-layout, .card-layout > .content {
+        display: flex;       /* ensure flex is active */
+        flex-direction: column; /* stack image and text vertically */
+    }
+
+    .card-image, .imageblock {
+        float: none !important;            /* remove float */
+        margin: 1rem !important;         /* center spacing */
+        width: 80%;             /* scale image for mobile */
+        max-width: 300px;       /* optional cap */
+        transform: rotate(0deg); /* optional: reset rotation for mobile */
+        display: block !important;
+        align-self: center;
+    }
+
+    .card-layout > :not(.card-image) {
+        width: 100%;            /* ensure text takes full width */
+    }
+
+    .content {
+        flex-direction: column; /* stack content sections */
+    }
+
+    .toc.sidebar {
+        position: static;       /* make sidebar flow normally on mobile */
+        flex: none;
+        margin-bottom: 2rem;
+    }
+}
