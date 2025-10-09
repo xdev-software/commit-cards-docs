@@ -23,3 +23,4 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./build/site
         force_orphan: true
+        cname: commit-cards.xdev.software
