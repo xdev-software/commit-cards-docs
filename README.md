@@ -8,9 +8,9 @@ It is the **documentation hub** built and maintained with [Antora](https://antor
 
 Can be executed with 
 ```bash
-docker run --rm -v ${PWD}:/antora antora/antora antora-playbook.yml
+docker run --rm -v %cd%:/antora antora/antora antora-playbook.yml
 ```
-NOTE: For Windows you should replace `${PWD}` with `%cd%`
+NOTE: For Linux you should replace `%cd%` with `${PWD}`
 
 ## License
 
