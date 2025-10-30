@@ -29,7 +29,6 @@ body {
 
 .nav-list{
     margin: 0;
- 
 }
 
 footer.footer {
@@ -45,18 +44,18 @@ footer.footer .link-separator
 	color: #c02222;
 }
 
-.doc h1 {
+.doc > h1.page:first-child {
     color: #ffffff;
     background-color: #c02222;
     padding: 1rem 2rem 0.75rem;
-    margin: 1.5rem auto 1.5rem auto !important;
+    margin: auto auto 0.5em auto;
     text-transform: uppercase;
 }
 
 .doc {
     width: 100%;
     max-width: 100%;
-    padding: 0;
+    padding: 0.5em;
 }
 /* ====== Global Styles (Light Theme) ====== */
 body {
@@ -163,5 +162,19 @@ body {
         width: 100%;
         position: fixed;
         top: auto;
+    }
+
+    /* Toolbar will otherwise overlap end of article */
+    body {
+        padding-bottom: 2.5em !important;
+    }
+
+    /* Nav will otherwise be offset by toolbar */
+    .nav {
+        height: calc(100vh - 2.5em) !important;
+    }
+
+    .nav-container {
+        top: unset;
     }
 }
