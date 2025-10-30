@@ -153,6 +153,10 @@ pre {
         flex-direction: column; /* stack image and text vertically */
     }
 
+    .doc {
+        padding: 0 1rem 4rem;
+    }
+
     .card-image, .imageblock {
         float: none !important;            /* remove float */
         margin: 1rem !important;         /* center spacing */
