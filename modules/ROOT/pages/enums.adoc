@@ -1,0 +1,4 @@
+:card-title: Enums instead of integer
+:card-description: Using Enums makes code readable without comments or assumed knowledge. Sometimes it is enough to use constants instead of 'magic numbers'.
+
+include::_partials/card-template.adoc[]

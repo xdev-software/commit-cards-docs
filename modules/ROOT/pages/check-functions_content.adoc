@@ -1,0 +1,40 @@
+Every function you write should have a clear, single purpose. **If it does more than one thing, it’s harder to read, test, and maintain.** Small, focused functions reduce bugs and make your code self-explanatory. Aim for minimal arguments - ideally one or two - and avoid side effects. A function should either compute a value or change state, not both.
+
+For example, instead of this long, multi-purpose method:
+
+```java
+public void processOrder(Order order, User user) {
+    if(order.isValid()) {
+        order.applyDiscount(user.getDiscount());
+        repository.save(order);
+        userNotification.notify(user)
+    }
+}
+```
+
+Break it into small, focused functions:
+
+```java
+public void processOrder(Order order, User user) {
+    if (!order.isValid()) return;
+    applyDiscount(order, user);
+    saveOrder(order);
+    notifyUser(user);
+}
+
+private void applyDiscount(Order order, User user) {
+    order.applyDiscount(user.getDiscount());
+}
+
+private void saveOrder(Order order) {
+    repository.save(order);
+}
+
+private void notifyUser(User user) {
+    userNotification.notify(user)
+}
+```
+
+Each method now does one thing, has a clear name, and is easy to test. Side effects like saving to the database or sending notifications are isolated, making bugs easier to spot.
+
+Before every git commit, review your functions: are they small, purposeful, and clean? If not, refactor. This habit compounds over time, producing code that is resilient, readable, and easy for your team and future self to work with.

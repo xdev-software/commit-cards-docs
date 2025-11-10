@@ -1,0 +1,33 @@
+The principle of least surprise is simple: *code should do what a reasonable developer expects it to do*. Avoid clever tricks that save a few lines but confuse anyone reading or maintaining your code. Surprise is the enemy of maintainability. If you or a teammate open the code six months later, it should feel familiar and predictable.
+
+In practice, this means naming things clearly, following conventions, and preferring explicitness over implicit magic. A method should do what its name suggests, a class should have a single, clear responsibility, and side effects should be obvious.
+
+For example, this surprises most developers:
+
+```java
+public class UserService {
+    public User findUser(String id) {
+        return Optional.ofNullable(database.get(id)).orElseGet(() -> new User("default"));
+    }
+}
+```
+
+A developer might expect `findUser` to return `null` or throw if the user doesn’t exist. Returning a default silently can lead to subtle bugs. A more predictable approach is explicit:
+
+```java
+public class UserService {
+    public Optional<User> findUser(String id) {
+        return Optional.ofNullable(database.get(id));
+    }
+}
+```
+
+Now it’s clear: handle the absence explicitly.
+
+Other practical habits:
+
+* Avoid overloading operators or using inheritance in confusing ways.
+* Stick to standard patterns and library conventions.
+* Make method contracts and return values explicit.
+
+Every time you commit, ask: “If another dev reads this, will it do exactly what they expect?” If the answer is no, rethink it. Predictable code reduces bugs, eases debugging, and makes the codebase a joy to work in. The principle of least surprise is about empathy: coding for the next developer who will touch your code, which is often future you.

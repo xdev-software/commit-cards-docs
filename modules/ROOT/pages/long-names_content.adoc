@@ -1,0 +1,39 @@
+Good names are the easiest way to make code self-explanatory. *A long, descriptive name saves more time than a short one that forces readers to guess what it does.* Names are not just labels  - they are documentation you can’t get out of sync with the code.
+
+For example, instead of this confusing snippet:
+
+```java
+int d; // days?
+int t; // total?
+int p; // price?
+```
+
+Use clear names that tell the story:
+
+```java
+int daysUntilExpiration;
+int totalInvoiceAmount;
+int productPriceInCents;
+```
+
+Same goes for methods. A short, “clever” name might save a few keystrokes but costs understanding:
+
+```java
+double calc(int a, int b) { ... } // what does it calculate?
+```
+
+Better:
+
+```java
+double calculateMonthlyInterest(int principalAmount, int numberOfMonths) { ... }
+```
+
+Long names are fine if they remove ambiguity. Use nouns for variables and classes, verbs for methods, and prefer clarity over brevity. Single-character names are only acceptable in very small scopes, like loop counters in tiny loops:
+
+```java
+for (int i = 0; i < items.size(); i++) { ... }
+```
+
+When committing code, always ask: “If I came back in six months, or a new developer joined, would they understand what this is doing without comments?” If the answer is no, rename it.
+
+Clear names prevent bugs, reduce the need for comments, and make refactoring safer. Don’t fear typing an extra few characters  - future readers, including future you, will thank you.

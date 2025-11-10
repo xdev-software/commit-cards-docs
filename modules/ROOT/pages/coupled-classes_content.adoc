@@ -1,0 +1,43 @@
+When two classes are **tightly coupled, any change in one forces changes in the other**. This makes your code fragile, hard to reuse, and painful to maintain. The goal is to **reduce these dependencies so each class can evolve on its own**.
+
+A common way to break this dependency is to code against interfaces instead of concrete implementations. That way, you depend on behavior, not on a specific class.
+
+For example, instead of this:
+
+```java
+public class OrderService {
+    private final EmailSender emailSender = new EmailSender();
+
+    public void placeOrder(Order order) {
+        // save order
+        emailSender.send(order);
+    }
+}
+```
+
+Here, `OrderService` is married to `EmailSender`. If you ever want to send a notification via SMS or push message, you must touch `OrderService`.
+
+A better way:
+
+```java
+public interface Notifier {
+    void send(Order order);
+}
+
+public class OrderService {
+    private final Notifier notifier;
+
+    public OrderService(Notifier notifier) {
+        this.notifier = notifier;
+    }
+
+    public void placeOrder(Order order) {
+        // save order
+        notifier.send(order);
+    }
+}
+```
+
+Now `OrderService` does not care if the notification is email, SMS, or something else. You can reuse it in many contexts, and testing becomes trivial.
+
+Decoupling makes your code more modular, testable, and flexible. Each time you commit, ask yourself: *If I change this class, how many others break with it?* If the answer is "too many," you probably have coupling that needs to be reduced.

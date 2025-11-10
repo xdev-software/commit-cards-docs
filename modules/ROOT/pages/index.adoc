@@ -1,0 +1,37 @@
+= XDEV Commit Cards: A Practical Approach to Clean Code
+
+The XDEV Commit Cards are a tangible tool designed to promote clean and sustainable coding practices among developers. Comprising a set of 32 cards, each offering concise advice on code quality, these cards serve as daily reminders to incorporate best practices into everyday development tasks.
+
+== Concept and Purpose
+
+The primary goal of the XDEV Commit Cards is to bridge the gap between theoretical knowledge and practical application. While training sessions and conferences provide valuable insights, the challenge lies in consistently applying these principles in daily coding activities. The Commit Cards address this by offering bite-sized, actionable tips that developers can refer to with each commit, fostering iterative learning and continuous improvement.
+
+== Benefits of Using Commit Cards
+
+* *Internalize Clean Code*: By integrating these cards into daily routines, developers can reinforce clean code principles, making them second nature over time.
+
+* *From Knowledge to Habit*: Repeated exposure to best practices encourages the transition from theoretical understanding to habitual application.
+
+* *Physical Reminder*: Unlike digital tools, the physical presence of the cards on a developer's desk serves as a constant visual cue, prompting adherence to coding standards.
+
+* *Engaging Learning*: The card-based approach introduces an element of playfulness, making the process of learning and applying clean code principles more engaging.
+
+== How to Use the Commit Cards
+
+Incorporating the Commit Cards into daily workflows is straightforward:
+
+1. **Draw a Card**: After each commit, draw a card from the deck.
+
+2. **Read and Reflect**: Review the advice on the card and consider how it applies to your recent code changes.
+
+3. **Apply the Tip**: Implement the suggested practice in your current or future coding tasks.
+
+4. **Repeat**: Continue this process daily to gradually internalize clean code habits.
+
+== Availability
+
+The XDEV Commit Cards are not available for purchase. Instead, they are distributed exclusively to XDEV customers and interested developers upon request. To obtain a set, developers are encouraged to reach out to XDEV directly: https://xdev.software/en/about-us/contact[Contact form]
+
+== Conclusion
+
+The XDEV Commit Cards offer a simple yet effective method for developers to enhance their coding practices. By providing daily, actionable tips, these cards facilitate the transition from knowledge to habit, promoting a culture of clean and sustainable code development.
