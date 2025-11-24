@@ -1,0 +1,4 @@
+:card-title: Don't reinvent the wheel
+:card-description: Is there a library that does exactly what you need? If there is already maintained and secure code, why shouldn't you use it?
+
+include::_partials/card-template.adoc[]

@@ -1,0 +1,4 @@
+:card-title: Don't leave broken windows
+:card-description: Don't leave dirty code, even if it works. Coworkers or your future self might follow your lead. Quality is a team issue.
+
+include::_partials/card-template.adoc[]
