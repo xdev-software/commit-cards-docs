@@ -1,0 +1,4 @@
+:card-title: Composition over Inheritance
+:card-description: Make sure that you are using composition whenever it is possible. Use inheritance only if it can't be replaced by composition.
+
+include::_partials/card-template.adoc[]

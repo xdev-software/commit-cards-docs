@@ -1,0 +1,4 @@
+:card-title: Documentation
+:card-description: Don't forget or avoid writing documentation as close to the code as possible. This helps your future self and coworkers.
+
+include::_partials/card-template.adoc[]

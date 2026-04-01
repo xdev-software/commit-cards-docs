@@ -1,0 +1,4 @@
+:card-title: Security
+:card-description: Are you handling sensitive data correctly? Are your dependencies upto-date? Check the important areas of your code again.
+
+include::_partials/card-template.adoc[]

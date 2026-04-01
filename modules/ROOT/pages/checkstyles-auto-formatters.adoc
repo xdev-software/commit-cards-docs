@@ -1,0 +1,4 @@
+:card-title: Checkstyles and Auto-Formatters
+:card-description: Search for the right Checkstyle and Auto-Formatter for your repository and automatically apply them to your code.
+
+include::_partials/card-template.adoc[]
