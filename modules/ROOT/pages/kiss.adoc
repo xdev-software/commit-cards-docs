@@ -1,0 +1,4 @@
+:card-title: KISS
+:card-description: Keep It Simple and Stupid. Ensure that your code is as simple as possible to enhance readability.
+
+include::_partials/card-template.adoc[]

@@ -1,0 +1,33 @@
+Always make sure every resource you open gets properly closed. Files, database connections, network streams, threads - anything that holds system resources must be released. Forgetting to do this leads to memory leaks, locked files, or crashed services. Think of it as cleaning up after yourself: *if you opened it, you close it*.
+
+In Java, the simplest way is *try-with-resources*. Any class that implements `AutoCloseable` can be safely closed automatically:
+
+```java
+try (BufferedReader reader = new BufferedReader(new FileReader("data.txt"))) {
+    String line;
+    while ((line = reader.readLine()) != null) {
+        System.out.println(line);
+    }
+} catch (IOException e) {
+    e.printStackTrace();
+}
+// reader is automatically closed here
+```
+
+If you can’t use try-with-resources, always close resources in a `finally` block to guarantee cleanup:
+
+```java
+Connection conn = null;
+try {
+    conn = DriverManager.getConnection(url, user, password);
+    // work with the connection
+} catch (SQLException e) {
+    e.printStackTrace();
+} finally {
+    if (conn != null) {
+        try { conn.close(); } catch (SQLException ignored) {}
+    }
+}
+```
+
+A good rule: every commit should leave your code in a state where no resource can leak. Treat `close()` as important as writing your main logic. Over time, this habit avoids subtle bugs, improves reliability, and makes your code easier to maintain. Clean, predictable, safe  - every time.

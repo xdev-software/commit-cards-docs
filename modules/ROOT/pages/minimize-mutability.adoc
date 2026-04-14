@@ -1,0 +1,4 @@
+:card-title: Minimize mutability
+:card-description: Immutable objects are simple and easy to understand. If possible, make all fields final and private. Ensure that classes won't be extended.
+
+include::_partials/card-template.adoc[]

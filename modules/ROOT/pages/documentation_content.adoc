@@ -1,0 +1,37 @@
+*Code without documentation might work today, but it will confuse you or your teammates tomorrow.* Good documentation is not about writing long manuals. It is about leaving small, precise hints as close to the code as possible, so the next person can understand the "why" behind your choices.
+
+The best place for this is right in your code, using clear naming, Javadoc, or small comments where logic is not obvious.
+
+Bad example:
+
+```java
+public void doIt(Order o) {
+    // process
+}
+```
+
+Nobody knows what this method actually does or why.
+
+Better example:
+
+```java
+/**
+ * Places a new order by saving it and sending a notification.
+ * Validation is handled before calling this method.
+ */
+public void placeOrder(Order order) {
+    // persist order
+    // notify customer
+}
+```
+
+Now the method name is clear, and the Javadoc explains intent and boundaries. That’s enough for someone new to quickly understand.
+
+A few simple rules:
+
+* Prefer self-explanatory names over comments where possible.
+* Use Javadoc for public APIs or methods with side effects.
+* Add short comments for non-trivial logic.
+* Update documentation when code changes.
+
+Every time you commit, check if your code tells its story. If someone opened it six months from now, would they understand what and why? If not, add the missing explanation right there in the code. This habit saves time, avoids confusion, and makes collaboration smoother.

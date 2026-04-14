@@ -1,0 +1,4 @@
+:card-title: Refactoring
+:card-description: Can you refactor some old code? Check if you can fix some section where there is duplication, outdated knowledge or possible performance issues.
+
+include::_partials/card-template.adoc[]
