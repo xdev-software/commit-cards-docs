@@ -1,0 +1,42 @@
+A single-purpose class does exactly one thing and does it well. When a class tries to do too much, it becomes hard to understand, test, and maintain. *Keeping responsibilities focused makes your code easier to read, safer to change, and easier to reuse.*
+
+For example, instead of this multipurpose class:
+
+```java
+public class UserManager {
+    public void createUser(User user) { ... }
+    public void sendWelcomeEmail(User user) { ... }
+    public void logUserActivity(User user, String activity) { ... }
+}
+```
+
+Each method belongs to a different concern  - user creation, emailing, logging. Refactor it into focused classes:
+
+```java
+public class UserService {
+    public void createUser(User user) { ... }
+}
+
+public class EmailService {
+    public void sendWelcomeEmail(User user) { ... }
+}
+
+public class ActivityLogger {
+    public void logUserActivity(User user, String activity) { ... }
+}
+```
+
+Now:
+
+* `UserService` only handles user-related operations.
+* `EmailService` only handles sending emails.
+* `ActivityLogger` only handles logging activity.
+
+Practical habits:
+
+* Check each class: “Does this do only one thing?”
+* Avoid mixing business logic with technical concerns like logging or persistence.
+* Small, focused classes are easier to test, extend, and reuse.
+* Group related behavior, but don’t overload classes with unrelated responsibilities.
+
+Every commit should leave classes more focused, making the code easier to understand, maintain, and evolve. Single-purpose classes are a cornerstone of clean, maintainable architecture.
