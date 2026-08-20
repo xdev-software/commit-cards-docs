@@ -1,0 +1,4 @@
+:card-title: Generics
+:card-description: Don't use raw types. Use Lists instead of Arrays. Favor generic methods if possible. Use bounded wildcards <E extends Number>
+
+include::_partials/card-template.adoc[]

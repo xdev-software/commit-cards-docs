@@ -1,0 +1,18 @@
+Comments are not just for explaining what the code does, they are for explaining why it does it. **Well-placed comments communicate intent, assumptions, and decisions that aren’t obvious from the code alone.** If a future developer - including future you - has to spend time guessing why something exists, **a comment can save hours**.
+
+Good practice is to write comments for intent, not obvious code. For example, instead of:
+
+```java
+int total = a + b; // add a and b
+```
+
+Explain the reasoning:
+
+```java
+// Total cost includes base amount and optional surcharge if user is premium
+int total = a + b;
+```
+
+Use comments to clarify tricky algorithms, external constraints, or domain-specific rules. Avoid commenting bad code as a shortcut - instead, clean the code and then add comments if the logic still needs explanation.
+
+Before every git commit, read your changes and ask: “Would someone unfamiliar with this know why this exists?” If not, add a short, clear comment. Good comments improve maintainability, reduce bugs, and make your code self-explanatory to the next developer who touches it.

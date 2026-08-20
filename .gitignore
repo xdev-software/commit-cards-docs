@@ -1,0 +1,27 @@
+# Antora build output
+build/
+.cache/
+
+# Node.js dependencies (if installed locally)
+node_modules/
+package-lock.json
+npm-debug.log
+yarn.lock
+pnpm-lock.yaml
+
+# Logs
+*.log
+
+# OS junk
+.DS_Store
+
+# Editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.bak
+*~

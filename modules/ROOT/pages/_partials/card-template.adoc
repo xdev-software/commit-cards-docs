@@ -1,0 +1,10 @@
+= {card-title}
+
+[.card-layout]
+--
+[.card-image, alt="{card-description}"]
+image::./cards/{docname}.avif[]
+
+[.card-text]
+include::../{docname}_content.adoc[]
+--

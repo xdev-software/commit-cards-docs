@@ -1,0 +1,4 @@
+:card-title: Write tests
+:card-description: Whenever it is possible, write tests for your methods. Even the most mundane tests can help at some point.
+
+include::_partials/card-template.adoc[]

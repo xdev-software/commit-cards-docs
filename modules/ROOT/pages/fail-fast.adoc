@@ -1,0 +1,4 @@
+:card-title: Fail fast
+:card-description: A dead program does less damage than a crippled one. Make your program fail as soon as there is something impossible happening.
+
+include::_partials/card-template.adoc[]

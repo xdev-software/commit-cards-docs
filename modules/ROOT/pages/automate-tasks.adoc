@@ -1,0 +1,4 @@
+:card-title: Automate boring tasks
+:card-description: Can the changes you've done be automated? If so, invest some time in automating these tasks. It saves time in the long run.
+
+include::_partials/card-template.adoc[]

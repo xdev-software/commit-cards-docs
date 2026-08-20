@@ -1,0 +1,4 @@
+:card-title: Reusable code
+:card-description: Check if your code is reusable. If reusing your code requires a lot of effort, nobody will use it.
+
+include::_partials/card-template.adoc[]

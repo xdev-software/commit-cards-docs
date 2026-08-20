@@ -1,0 +1,4 @@
+:card-title: ETC
+:card-description: Easier To Change. Make sure your commit makes the code easier to change in the future.
+
+include::_partials/card-template.adoc[]

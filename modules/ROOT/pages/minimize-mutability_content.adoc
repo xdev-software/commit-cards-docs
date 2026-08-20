@@ -1,0 +1,30 @@
+Immutable objects are your safest friend in Java. When fields don’t change after creation, reasoning about the code becomes predictable, thread-safe, and bug-resistant. Make fields `private` and `final`, provide no setters, and avoid exposing internal references that could be modified. Prefer `final` classes unless inheritance is truly needed.
+
+Instead of this mutable class:
+
+```java
+public class User {
+    private String name;
+    private int age;
+
+    public void setName(String name) { this.name = name; }
+    public void setAge(int age) { this.age = age; }
+}
+```
+
+Use a Java record to make it immutable and concise:
+
+```java
+public record User(String name, int age) { }
+```
+
+This automatically makes fields `private` and `final`, generates a constructor, and provides getter methods (`name()` and `age()`) without setters. The object cannot be modified after creation.
+
+Practical rules:
+
+* Use immutable collections or wrap them in `Collections.unmodifiableList`.
+* Avoid setters unless there’s a compelling reason.
+* Prefer constructing new objects over modifying existing ones.
+* Consider records for simple data carriers  - they are immutable by default and reduce boilerplate.
+
+Every commit should ask: *“Could this object be modified unexpectedly elsewhere?”* If yes, rethink its design. Minimizing mutability makes code safer, easier to reason about, and reduces subtle bugs that even experienced developers stumble upon.

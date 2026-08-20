@@ -1,0 +1,4 @@
+:card-title: Understanding your code
+:card-description: Do you completely understand every line of your code? Ask yourself if you could explain each line to a colleague. If not: Investigate.
+
+include::_partials/card-template.adoc[]

@@ -1,0 +1,25 @@
+As developers, we often feel tempted to build everything ourselves. But many problems you face have already been solved, tested, and optimized by others. Writing your own version of these solutions usually means spending extra time, introducing bugs, and maintaining code you don’t really need.
+
+For example, imagine you want to hash a password. You could try writing your own algorithm:
+
+```java
+public String hash(String password) {
+    // naive and insecure
+    return Integer.toHexString(password.hashCode());
+}
+```
+
+This looks simple, but it is insecure and dangerous. A better approach is to use a well-maintained library:
+
+```java
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+String hash = encoder.encode("mySecretPassword");
+```
+
+Here, you rely on proven code that handles complexity and security for you. You save time, avoid pitfalls, and gain confidence that your solution will hold up in production.
+
+Of course, balance is key. *Do not add a heavy library just for one trivial method. But if a library is well-maintained, widely used, and exactly fits your need, trust it instead of reinventing the wheel.*
+
+Every time you commit, ask yourself: *Did I just write code that already exists in a safe, tested library?* If the answer is yes, consider replacing your custom solution. This habit keeps your codebase leaner, safer, and easier to maintain.

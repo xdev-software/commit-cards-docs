@@ -1,0 +1,51 @@
+Using raw integers to represent types, statuses, or categories is a common source of confusion and bugs. Magic numbers like `if (status == 3)` force readers to remember what `3` means. *Enums solve this by giving these values meaningful names, making your code self-explanatory and easier to maintain.*
+
+Enums also provide type safety. Unlike integers, they prevent invalid values from creeping in. You can add methods, implement interfaces, or even attach metadata. This makes your domain model more expressive, aligning with clean architecture and domain-driven design principles. Every time you consider using an integer as a label or identifier, think enum first.
+
+```java
+enum OrderStatus {
+    NEW(1),
+    PROCESSING(2),
+    SHIPPED(3),
+    DELIVERED(4);
+
+    private final int code;
+
+    OrderStatus(int code) {
+        this.code = code;
+    }
+
+    public int getCode() {
+        return code;
+    }
+}
+```
+
+```java
+class Order {
+    private OrderStatus status;
+
+    public void setStatus(OrderStatus status) {
+        this.status = status;
+    }
+
+    public boolean isShipped() {
+        return status == OrderStatus.SHIPPED;
+    }
+}
+```
+
+```java
+class OrderProcessor {
+    public void process(Order order) {
+        switch (order.getStatus()) {
+            case NEW -> System.out.println("Preparing order");
+            case PROCESSING -> System.out.println("Order is being processed");
+            case SHIPPED -> System.out.println("Order is on its way");
+            case DELIVERED -> System.out.println("Order delivered to customer");
+        }
+    }
+}
+```
+
+Using enums everywhere you would normally use an int removes ambiguity, reduces errors, and documents intent directly in the code. Over time, this small habit prevents countless bugs and makes code reviews much smoother.
