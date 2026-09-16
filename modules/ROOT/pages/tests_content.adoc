@@ -1,0 +1,37 @@
+Writing tests is essential for solid, maintainable code. Every time you add or change a method, think about how someone (including future you) will verify it works. *Even simple tests save hours of debugging later.*
+
+There are three main levels of tests to keep in mind:
+
+*Unit tests* focus on a single class or method in isolation. They are fast, easy to run, and catch issues early. Example:
+
+```java
+class CalculatorTest {
+    @Test
+    void addsTwoNumbers() {
+        Calculator calc = new Calculator();
+        int result = calc.add(2, 3);
+        assertEquals(5, result);
+    }
+}
+```
+
+*Integration tests* verify how multiple components work together. This includes database interactions or service layers. They ensure your system’s pieces communicate correctly, without running the full application or real UI.
+
+```java
+@SpringBootTest
+class UserServiceIntegrationTest {
+    @Autowired UserService userService;
+
+    @Test
+    void createsAndFetchesUser() {
+        User user = userService.create("Alice");
+        assertEquals("Alice", userService.findById(user.getId()).getName());
+    }
+}
+```
+
+*End-to-end tests* simulate real user behavior across the entire system. This includes UI tests with tools like Selenium or Cypress, as well as real interactions with databases, APIs, and external services. They are slower and more expensive to maintain, but they catch problems only visible when the system is used like a real user would.
+
+Writing tests consistently improves confidence in your code. Treat each Git commit like a mini milestone, if it changes behavior, a test should prove it works. Keep tests clean, readable, and meaningful.
+
+Tests are an investment: they make your code safer, easier to refactor, and prevent future headaches. Every method you commit without a test is a debt you’ll pay later.

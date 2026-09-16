@@ -1,0 +1,4 @@
+:card-title: Finish what you started
+:card-description: Have you closed all resources after using them? Use try-with-resources and finally Blocks as much as possible.
+
+include::_partials/card-template.adoc[]

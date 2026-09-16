@@ -1,0 +1,4 @@
+:card-title: Don't be afraid of long names
+:card-description: Use explanatory names for methods and variables even if they are long. Try to avoid single character names like 'i' or 'j'.
+
+include::_partials/card-template.adoc[]

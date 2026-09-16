@@ -1,0 +1,4 @@
+:card-title: Single purpose class
+:card-description: One class should only do one thing. This helps to understand them. Check your classes if they really only have one purpose.
+
+include::_partials/card-template.adoc[]

@@ -1,0 +1,4 @@
+:card-title: Coupled classes
+:card-description: You can’t change one without the other and you can’t reuse either one of them. Try to depend on as few classes as possible and use interfaces instead. (Decoupling)
+
+include::_partials/card-template.adoc[]

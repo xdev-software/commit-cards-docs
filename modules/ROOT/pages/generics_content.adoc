@@ -1,0 +1,47 @@
+Generics are your safety net in Java. They let the compiler enforce type safety at compile time, so you don’t get `ClassCastException` at runtime. Never use raw types. Always parameterize collections and methods. Prefer `List<E>` over arrays because lists are flexible, type-safe, and work smoothly with the Collections API.
+
+The real benefit comes when all items in a list share a type. For example, imagine a `Burger` hierarchy:
+
+```java
+class Burger { void cook() { System.out.println("Cooking burger"); } }
+class Cheeseburger extends Burger { void addCheese() { System.out.println("Adding cheese"); } }
+```
+
+A generic method can handle any kind of burger safely:
+
+```java
+public static <T extends Burger> void cookAll(List<T> burgers) {
+    for (T burger : burgers) {
+        burger.cook(); // safe: compiler knows every item is a Burger
+    }
+}
+```
+
+Now you can do:
+
+```java
+List<Cheeseburger> cheeseburgers = List.of(new Cheeseburger(), new Cheeseburger());
+cookAll(cheeseburgers); // guaranteed safe
+
+List<Burger> burgers = List.of(new Burger(), new Burger());
+cookAll(burgers); // also safe
+```
+
+Without generics, you’d need raw lists and unsafe casts:
+
+```java
+List rawList = new ArrayList();
+rawList.add(new Cheeseburger());
+for (Object b : rawList) {
+    ((Burger) b).cook(); // unsafe, runtime errors possible
+}
+```
+
+Rules for every commit:
+
+* Avoid raw types: `List list` → `List<Burger> list`
+* Prefer `List` over arrays for safety and flexibility
+* Use bounded wildcards `<T extends Burger>` for reusable methods
+* Keep collections type-consistent so the compiler protects you from mistakes
+
+*Generics are more than syntax  - they make your code predictable, safe, and maintainable.* When all items share a type, you can operate on them confidently without unsafe casts.

@@ -1,0 +1,4 @@
+:card-title: Check dependencies
+:card-description: Do your really need all your dependencies? Check if you can delete some of them, and if you are using the latest and safest version of them.
+
+include::_partials/card-template.adoc[]

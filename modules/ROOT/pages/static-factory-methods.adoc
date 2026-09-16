@@ -1,0 +1,4 @@
+:card-title: Static factory methods
+:card-description: Check if it makes sense to use a static factory method instead of a constructor. They can return any subtype of their return type and have meaningful names.
+
+include::_partials/card-template.adoc[]

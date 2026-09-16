@@ -1,0 +1,24 @@
+Dependencies are powerful, but every single one comes with cost: more code to maintain, possible security issues, and slower builds. Over time, projects collect libraries that nobody remembers why they exist. This creates hidden risks and unnecessary complexity.
+
+Before adding a dependency, ask yourself: *Can I solve this with standard Java or an existing library I already use?* For example, Java already provides good collections, date handling, and HTTP clients. You don’t need a third-party library for everything.
+
+Bad habit:
+
+```xml
+<dependency>
+    <groupId>commons-lang</groupId>
+    <artifactId>commons-lang</artifactId>
+    <version>2.6</version>
+</dependency>
+```
+
+Often this was added years ago just for something like `StringUtils.isEmpty()`. In modern Java, you can replace it with `str == null || str.isBlank()` and drop the whole library.
+
+Good habit:
+
+* Review your `pom.xml` or `build.gradle` regularly.
+* Remove libraries that are unused or duplicated.
+* Upgrade to the latest stable and secure versions.
+* Prefer well-maintained and widely adopted libraries over obscure ones.
+
+Each time you commit, ask: *Did I just add or update a dependency? Do I really need it? Is it safe and current?* Keeping your dependency list lean makes your system lighter, safer, and easier to maintain.

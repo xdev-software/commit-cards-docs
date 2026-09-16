@@ -1,0 +1,4 @@
+:card-title: Prefer data structures
+:card-description: Use Data Structures with a specific name and structure instead of anonymous or generic instances.
+
+include::_partials/card-template.adoc[]

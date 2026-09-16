@@ -1,0 +1,46 @@
+Reusable code is code that can be easily used in multiple places without extra effort. If reusing your code is painful, developers will copy-paste or write it again, which leads to duplication, bugs, and maintenance headaches. Strive for modular, clear, and configurable components.
+
+For example, instead of hardcoding a file path or format:
+
+```java
+public class ReportGenerator {
+    public void generateReport(List<String> data) {
+        // always writes to "/tmp/report.txt"
+        try (PrintWriter writer = new PrintWriter("/tmp/report.txt")) {
+            for (String line : data) {
+                writer.println(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+Refactor it to be reusable:
+
+```java
+public class ReportGenerator {
+    public void generateReport(List<String> data, Path outputFile) {
+        try (PrintWriter writer = new PrintWriter(Files.newBufferedWriter(outputFile))) {
+            for (String line : data) {
+                writer.println(line);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to generate report", e);
+        }
+    }
+}
+```
+
+Now it’s flexible  - you can generate reports to any location without changing the code.
+
+Practical habits for reusability:
+
+* Accept parameters instead of hardcoding values.
+* Keep methods focused on a single task.
+* Avoid tight coupling with other classes or frameworks.
+* Provide clear and consistent interfaces.
+* Make it easy to extend or customize without modifying the core logic.
+
+Every commit should ask: *“Could someone use this in a different context easily?”* If not, consider refactoring. Reusable code saves time, reduces bugs, and improves consistency across your codebase.

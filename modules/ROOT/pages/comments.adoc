@@ -1,0 +1,4 @@
+:card-title: Comments
+:card-description: Is your code sufficiently commented? Try to explain the intent.
+
+include::_partials/card-template.adoc[]

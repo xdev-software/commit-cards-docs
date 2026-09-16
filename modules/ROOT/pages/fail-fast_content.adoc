@@ -1,0 +1,31 @@
+Fail fast means detecting problems as early as possible instead of letting the program continue in an invalid state. A program that crashes immediately with a clear error is easier to debug than one that continues silently and produces wrong results.
+
+Bad example:
+
+```java
+public void setAge(int age) {
+    if (age < 0) {
+        age = 0; // silently fix invalid input
+    }
+    this.age = age;
+}
+```
+
+Here the program continues, but invalid data quietly slips in. Bugs may appear later far from the source.
+
+Better example:
+
+```java
+public void setAge(int age) {
+    if (age < 0) {
+        throw new IllegalArgumentException("Age cannot be negative: " + age);
+    }
+    this.age = age;
+}
+```
+
+Now the program immediately signals the problem. Developers see the error where it happens, making debugging and maintenance much easier.
+
+Fail fast applies to null values, invalid arguments, inconsistent states, or unexpected conditions. Use exceptions, assertions, or validation checks to catch impossible scenarios early.
+
+Before committing, ask: *Does my code detect impossible or invalid states immediately, or does it silently continue?* Failing fast saves time, prevents cascading errors, and makes your code more robust.

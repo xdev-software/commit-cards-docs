@@ -1,0 +1,31 @@
+Ubiquitous Language means your code speaks the same language as the business. Every class, method, and variable should use terms that everyone on the project  - developers, QA, product owners  - already understand. If you invent words, even clever ones, you create friction and confusion. Clear, shared vocabulary makes code self-explanatory and reduces mistakes.
+
+In practice, this means aligning your code with the domain model. If the business talks about `Order`, `Invoice`, and `Payment`, your code should too. Avoid synonyms or technical jargon that don’t exist in the domain. This makes it easier to onboard new team members, review code, and reason about complex workflows.
+
+Example:
+
+```java
+// Bad: unclear, technical words
+class TransactionProcessor {
+    void doStuff(OrderWrapper ow) { ... }
+}
+
+// Good: matches domain language
+class OrderService {
+    void processOrder(Order order) { ... }
+}
+```
+
+Notice how `processOrder` is immediately understandable. You don’t need comments to explain what it does.
+
+Also, ubiquitous language isn’t just naming. Your method signatures, return types, and exceptions should reflect the domain. If the business cares about `Invoice` status, don’t call it `State` or `Flag`. Make it explicit:
+
+```java
+enum InvoiceStatus { PENDING, PAID, CANCELLED }
+
+class InvoiceService {
+    void markAsPaid(Invoice invoice) { ... }
+}
+```
+
+Every commit should reflect this principle. Before you push, ask yourself: *“Would someone from the business understand what this code is doing?”* If not, rename it. Over time, your code becomes a mirror of the domain  - clear, expressive, and maintainable. It’s one of the simplest ways to make code elegant without adding complexity.

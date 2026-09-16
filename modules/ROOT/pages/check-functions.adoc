@@ -1,0 +1,4 @@
+:card-title: Check your functions
+:card-description: Are they small? Do they do only one thing? Do they have as few arguments as possible? Do they have no side effects?
+
+include::_partials/card-template.adoc[]
