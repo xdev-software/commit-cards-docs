@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="790" height="695" fill="none" viewBox="0 0 23.7 20.85">
+  <g transform="translate(-.15 -1)">
+    <path stroke="#1C1C1C" stroke-width="1.7" d="M4.2 18v-7c0-1.6568 1.3431-3 3-3h9.6c1.6568 0 3 1.3432 3 3v7c0 1.6569-1.3432 3-3 3H7.2c-1.6569 0-3-1.3431-3-3z" style="stroke:#000;stroke-opacity:1"/>
+    <path stroke="#1C1C1C" stroke-linecap="round" stroke-width="1.7" d="M12 5v3" style="stroke:#000;stroke-opacity:1"/>
+    <path stroke="#1C1C1C" stroke-width="1.7" d="M20 12h1c1.1046 0 2 .8954 2 2v1.4459a2 2 0 0 1-1.2572 1.857L20 18M4 12H3c-1.1046 0-2 .8954-2 2v1.4459a2 2 0 0 0 1.2572 1.857L4 18" style="stroke:#000;stroke-opacity:1"/>
+    <path fill="#1C1C1C" fill-rule="evenodd" d="M16 11.15a.85.85 0 0 1 .85.85v2a.85.85 0 1 1-1.7 0v-2a.85.85 0 0 1 .85-.85zm-8 0a.85.85 0 0 1 .85.85v2a.85.85 0 0 1-1.7 0v-2a.85.85 0 0 1 .85-.85z" clip-rule="evenodd" style="fill:#000;fill-opacity:1"/>
+    <circle cx="12" cy="3" r="2" fill="#1C1C1C" style="fill:#000;fill-opacity:1"/>
+    <path stroke="#1C1C1C" stroke-linecap="round" stroke-width="1.7" d="M10 17h4" style="stroke:#000;stroke-opacity:1"/>
+  </g>
+</svg>
